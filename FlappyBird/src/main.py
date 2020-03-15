@@ -1,6 +1,11 @@
+import pygame
+
 from Engine import GameObject, Slider
+from Engine.game.game import Game
 from Engine.game.window import Window
 from Engine.utils.image_processing import load_image_scaled
+from Engine.utils.time import Time
+from src.models import Bird
 
 WINDOW_WIDTH = 520
 WINDOW_HEIGHT = 720
@@ -8,6 +13,8 @@ WINDOW_HEIGHT = 720
 BASE_HEIGHT = 112
 BASE_Y = WINDOW_HEIGHT - BASE_HEIGHT
 
+#                                        birdHeight
+BIRD_Y = WINDOW_HEIGHT / 2 - BASE_HEIGHT - 24 / 2
 
 BASE_IMG = load_image_scaled('../imgs/base.png', (WINDOW_WIDTH, BASE_HEIGHT))
 BACKGROUND_IMG = load_image_scaled('../imgs/background.png', (WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -21,11 +28,25 @@ def init_components():
 
 
 def main():
-    window = Window(WINDOW_WIDTH, WINDOW_HEIGHT, centered=True, fps=60)
+    from Engine.utils.input import Input
+
+    game = Game(fps=60)
+    game.create_window(WINDOW_WIDTH, WINDOW_HEIGHT, centered=True)
 
     init_components()
 
-    window.start()
+    bird = Bird(
+        images_path='../imgs/bird',
+        jump_force=5,
+        acceleration=4,
+        max_rotation=20,
+        max_displacement=16,
+        x=80,
+        y=BIRD_Y,
+    )
+
+    Input.add(bird.jump)
+    game.start()
 
 
 if __name__ == '__main__':
