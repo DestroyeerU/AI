@@ -37,3 +37,7 @@ class Bird(GameObject):
             self.motion.speed = -6
 
             # create add force on physics
+
+
+class Pipe(GameObject):
+    pass

@@ -1,3 +1,5 @@
+import contextlib
+
 import pygame
 from pygame.surface import Surface
 
@@ -70,7 +72,8 @@ class GameObject:
         self.__update__()
         self.late_update()
 
-        win.blit(self.current_image, (self.transform.x, self.transform.y))
+        with contextlib.suppress(TypeError):    # if self.current_image:
+            win.blit(self.current_image, (self.transform.x, self.transform.y))
 
     def __update__(self):
         if self.animation:

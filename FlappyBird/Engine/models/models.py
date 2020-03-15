@@ -22,7 +22,7 @@ class Slider(GameObject):
 
             current_object.transform.x = self.game_objects[i-1].transform.x + object_width
 
-    def move(self):
+    def update(self):
         for game_object in self.game_objects:
             game_object.transform.x += self.speed
 
@@ -35,9 +35,3 @@ class Slider(GameObject):
 
             if game_object.transform.x + image_width < 0:
                 game_object.transform.x = self.game_objects[i-1].transform.x + image_width
-
-    def draw(self, win: Surface):
-        self.move()
-        for game_object in self.game_objects:
-            position = (game_object.transform.x, game_object.transform.y)
-            win.blit(game_object.current_image, position)

@@ -13,7 +13,7 @@ class Game:
         self.clock = pygame.time.Clock()
 
         self.running = False
-        self.window: Window = Window(0, 0)
+        self.window = None
 
         Input.add(self.end_game)
 
