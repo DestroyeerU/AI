@@ -40,7 +40,7 @@ def init_components():
 
 
 def main():
-    from Engine.utils.input import Input
+    from Engine.game.input import Input
 
     game = Game(fps=60)
     game.create_window(WINDOW_WIDTH, WINDOW_HEIGHT, centered=True)

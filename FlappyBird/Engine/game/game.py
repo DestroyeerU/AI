@@ -1,8 +1,8 @@
 import pygame
 
+from Engine.game.input import Input
 from Engine.game.window import Window
 from Engine.utils import Time
-from Engine.utils.input import Input
 
 
 class Game:

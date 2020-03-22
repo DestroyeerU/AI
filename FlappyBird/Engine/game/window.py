@@ -26,5 +26,5 @@ class Window:
         pygame.display.update()
 
     def draw_game_objects(self):
-        for game_objects in ObjectsController.game_objects:
+        for game_objects in ObjectsController.observers:
             game_objects.draw(self.win)

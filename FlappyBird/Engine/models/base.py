@@ -4,26 +4,7 @@ import pygame
 from pygame.surface import Surface
 
 from Engine import game
-from Engine.utils.input import Input
-
-
-class Transform:
-
-    def __init__(self, x, y, width, height, rotation):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.rotation = rotation
-
-    def rotate(self, img, rotation):
-        self.rotation = rotation
-        image_center = img.get_rect(topleft=(self.x, self.y)).center
-
-        rotated_image = pygame.transform.rotate(img, rotation)
-        new_rect = rotated_image.get_rect(center=image_center)
-
-        return rotated_image, new_rect
+from Engine.game.transform import Transform
 
 
 class Animation:
